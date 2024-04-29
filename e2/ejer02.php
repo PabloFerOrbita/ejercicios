@@ -10,7 +10,6 @@
         th {
             border: solid black 1px;
             border-collapse: collapse;
-            text-align: center;
             padding: 5px;
         }
 
@@ -18,6 +17,10 @@
         td {
             border-right: solid black 1px;
             padding: 5px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -31,7 +34,7 @@
     for ($i = 0; $i < 7; $i++) {
         echo '<tr>';
         for ($j = 0; $j < 10; $j++) {
-            echo '<td><a href="ejer02b.php?anio=' . $anio . '>' . $anio . '</a></td>';
+            echo '<td><a href="ejer02b.php?anio=' . $anio . '">' . $anio . '</a></td>';
             $anio++;
         }
         echo '</tr>';
