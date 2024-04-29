@@ -23,7 +23,7 @@
             $signo = ($_GET['dia'] > 19 ? 'acuario' : 'capricornio');
             break;
         case 2:
-            $signo = ($_GET['dia'] > 19 ? 'piscis' : 'acuario');
+            $signo = ($_GET['dia'] > 18 ? 'piscis' : 'acuario');
             break;
         case 3:
             $signo = ($_GET['dia'] > 20 ? 'aries' : 'piscis');
