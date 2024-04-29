@@ -41,9 +41,6 @@
         ?>
     </table>
     <a href="ejer01.html">Volver</a>
-    <?php
-
-    ?>
 </body>
 
 </html>
