@@ -5,12 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style type="text/css">
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label{
+            font-weight: bold;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            gap: 1em;
+        }
+
+        #numero {
+            width: 10%;
+        }
+
+        #guardar {
+            width: 10%;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>FACTORIAL:</h1>
+    
     <form method="GET" action="ejer04.php">
-        <label for="numero">Numero:</label><input type="number" id="numero" name="numero" /><br>
+        <h3>FACTORIAL:</h3>
+        <div>
+            <label for="numero">Numero: </label><input type="number" id="numero" name="numero" /><br>
+        </div>
         <button type="submit" id="guardar">Enviar</button>
     </form>
 </body>

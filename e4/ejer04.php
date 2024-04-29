@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,7 +19,7 @@
         $factorial = $factorial * $i;
     }
 
-    echo '<p>El factorial de ' . $_GET['numero'] . ' es ' . $factorial . '</p>';
+    echo '<p>El factorial de <span style="font-weight:bold;"> ' . $_GET['numero'] . '</span> es  <span style="font-weight:bold;">' . $factorial . '</span></p>';
     echo '<a href="ejer04.html">Volver</a>';
 
     ?>
