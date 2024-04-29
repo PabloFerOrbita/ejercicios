@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,10 +56,10 @@
             $signo =  ($_GET['dia'] > 21 ? 'capricornio' : 'sagitario');
             break;
     }
-    echo '<img src="img/signo-' . $signo . '.gif"/>';
-    echo '<p>' . ucfirst($signo) . '</p>';
-    echo '<p>' . $_GET['dia'] . '/' . $_GET['mes'] . '</p>';
-    echo '<p><a href="ejer03.html">Volver</a>';
+    echo '<img src="img/signo-' . $signo . '.gif"/><br>';
+    echo '<span>' . ucfirst($signo) . '</span><br>';
+    echo '<span>' . $_GET['dia'] . '/' . $_GET['mes'] . '</span><br>';
+    echo '<a href="ejer03.html">Volver</a>';
 
     ?>
 </body>
