@@ -46,8 +46,13 @@
         } else {
             $fecha = $_GET['fecha'];
         }
-        if ((bool)strtotime($fecha)) {
-            echo '<h3>La fecha es válida</h3>'; 
+        if (DateTime::createFromFormat('Y-m-d', $fecha) !== false || DateTime::createFromFormat('d-m-Y', $fecha) !== false) {
+            $errores = DateTime::getLastErrors();
+            if (!empty($errores['warning_count'])) {
+                echo "<h3>La fecha no es válida</h3>";
+            } else {
+                echo '<h3>La fecha es válida</h3>';
+            }
         } else {
             echo '<h3>La fecha no es válida</h3>';
         }
