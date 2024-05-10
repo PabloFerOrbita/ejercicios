@@ -34,12 +34,18 @@ function autocompletar(busqueda) {
     var resultados = 0;
 
     $('.opcion').each((index, valor) => {
+        $(valor.firstChild).html((index, palabra) => (palabra.replace(new RegExp('<(.*?)>', 'g'), '')));
         if ($('#modo').is(':checked')) {
             if (!$(valor.firstChild).text().toUpperCase().includes(busqueda.toUpperCase())) {
                 $(valor).addClass('d-none');
 
-            } else {
+            } else if (busqueda != '') {
                 $(valor).removeClass('d-none');
+                $(valor.firstChild).html((index, palabra) => {
+                    reemplazo = palabra.substring(palabra.toUpperCase().indexOf(busqueda.toUpperCase()), );
+                    palabra = palabra.split(new RegExp(busqueda, 'i'), 2);
+                    return palabra.join(`<strong>${reemplazo}</strong>`)
+                });
                 resultados++;
             }
         } else {
