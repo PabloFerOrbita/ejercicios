@@ -32,16 +32,36 @@ function rellenarTabla() {
 }
 function autocompletar(busqueda) {
     var resultados = 0;
-    $('.opcion').each((index, valor) => {
-        if (!$(valor.firstChild).text().toUpperCase().includes(busqueda.toUpperCase())) {
-            $(valor).addClass('d-none');
 
+    $('.opcion').each((index, valor) => {
+        if ($('#modo').is(':checked')) {
+            if (!$(valor.firstChild).text().toUpperCase().includes(busqueda.toUpperCase())) {
+                $(valor).addClass('d-none');
+
+            } else {
+                $(valor).removeClass('d-none');
+                resultados++;
+            }
         } else {
-            $(valor).removeClass('d-none');
-            resultados++;
+            let caracteres = busqueda.split('');
+            let ultimoIndex = 0;
+            let coincidencias = 0;
+            caracteres.forEach(caracter => {
+                if ($(valor.firstChild).text().toUpperCase().includes(caracter.toUpperCase(), ultimoIndex)) {
+                    coincidencias++;
+                    ultimoIndex = $(valor.firstChild).text().toUpperCase().indexOf(caracter.toUpperCase());
+                }
+            })
+            if (coincidencias != caracteres.length) {
+                $(valor).addClass('d-none');
+            } else {
+                $(valor).removeClass('d-none');
+                resultados++;
+            }
         }
 
     })
+
     if (busqueda == '') {
         esconderTabla('')
     } else {
