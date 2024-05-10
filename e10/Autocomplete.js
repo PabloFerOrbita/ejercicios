@@ -25,26 +25,28 @@ function rellenarTabla() {
 
         let opcion = $('<tr class="p-1 opcion">');
         $(opcion).on('click', (e) => { mostrarPalabra($(e.target.firstChild).text()) });
-        $(opcion).append(`<td>${valor.valor}</td><td>${valor.id}</td>`);
+        $(opcion).append(`<td>${valor.valor}</td><td class="text-end text-secondary fw-light">${valor.id}</td>`);
         $('#resultados').append(opcion);
 
     })
 }
 function autocompletar(busqueda) {
-   var resultados = 0;
+    var resultados = 0;
     $('.opcion').each((index, valor) => {
         if (!$(valor.firstChild).text().toUpperCase().includes(busqueda.toUpperCase())) {
             $(valor).addClass('d-none');
-            
+
         } else {
             $(valor).removeClass('d-none');
             resultados++;
         }
 
     })
-    if (busqueda == '' || resultados == 0) {
+    if (busqueda == '') {
         esconderTabla('')
     } else {
+
+        $('#cantidad').html(resultados > 0 ? `Se han encontrado <strong>${resultados}</strong> resultados` : `Se han encontrado <strong>0</strong> resultados para <strong>"${busqueda}"</strong>`)
         mostrarTabla();
     }
 
