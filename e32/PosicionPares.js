@@ -11,4 +11,4 @@ function posiciones(array) {
     return arrayPares;
 }
 
-window.addEventListener('click', cargarPagina)
+window.addEventListener('load', cargarPagina)
