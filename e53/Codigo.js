@@ -44,15 +44,12 @@ function validarCampo(campo) {
 
 function validarFormulario(e) {
     var elementos = Array.from(e.target.querySelectorAll('input, textarea'));
-    var errores = 0;
     elementos.forEach(element => {
         if (!validarCampo(element)) {
-            errores++;
+            e.preventDefault();
+            return;
         }
     })
-    if (errores > 0) {
-        e.preventDefault();
-    }
 }
 
 function mostrarMensaje(id, mensaje) {
