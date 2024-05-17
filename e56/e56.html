@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="Capas.js"></script>
+    <title>Document</title>
+    <style type="text/css">
+       
+        #imagen-cursor {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('./imagen1.jpg');
+            z-index: 2;
+            
+
+        }
+        #fondo {
+            position: relative;
+            z-index: 1;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+        <div id="imagen-cursor" class="d-none"></div>
+        <div id="fondo" class="vw-75 vh-75"><img src="imagen2.jpg" class="img-fluid"></div>
+</body>
+
+</html>
