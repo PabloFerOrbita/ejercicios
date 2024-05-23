@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script src="ranking.js"></script>
+</head>
+
+<body>
+    <div class="vh-100 vw-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 id="Cronometro" class="fw-bold"></h1>
+        <h1 id="pregunta"></h1>
+        <div id="respuestas" class="w-50 h-25 d-flex flex-column justify-content-center align-items-center gap-3">
+            <div class="form-check">
+                <input class="form-check-input respuesta" type="radio" name="respuestas" id="respuesta1">
+                <label class="form-check-label" for="respuesta1" id="descripcion1">
+
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input respuesta" type="radio" name="respuestas" id="respuesta2">
+                <label class="form-check-label" for="respuesta2" id="descripcion2">
+
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input respuesta" type="radio" name="respuestas" id="respuesta3">
+                <label class="form-check-label" for="respuesta3" id="descripcion3">
+
+                </label>
+            </div>
+
+        </div>
+        <button class="btn btn-primary" id="siguiente">Siguiente</button>
+    </div>
+
+</body>
+
+</html>
