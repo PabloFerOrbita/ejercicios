@@ -35,8 +35,17 @@ function setCronometro() {
     $('#Cronometro').text(`${minutos <= 9 ? `0${minutos}` : minutos} : ${segundos <= 9 ? `0${segundos}` : segundos}`);
 }
 function cargarPagina() {
-    mostrarPreguntas();
+    menu();
 
+}
+
+function menu() {
+    $('#cuerpo').empty();
+    $('#cuerpo').append('<h1>QUIZ</h1>')
+    $('#cuerpo').append('<button type="button" id="comenzar" class="btn btn-success mb-3">Comenzar Juego</button>');
+    $('#cuerpo').append('<button type="button" id="ranking" class="btn btn-primary">Ver Ranking</button>');
+    $('#comenzar').click(mostrarPreguntas);
+    $('#ranking').click(() => {mostrarTop()});
 }
 
 function setPreguntas() {
@@ -129,7 +138,7 @@ function sacarFormulario() {
     $('#cuerpo').append('<form id="guardarPuntuacion" class="h-25 d-flex flex-column justify-content-center align-items-center g-3"></form>');
     $('#guardarPuntuacion').append(`<h1>Has obtenido ${puntuacion} puntos</h1>`);
     $('#guardarPuntuacion').append('<label for="nombre" class=" form-label">Introduce un nombre para guardar tu puntuación</label>');
-    $('#guardarPuntuacion').append('<input type="text" id="nombre" class="form-control mb-4"></input>');
+    $('#guardarPuntuacion').append('<input type="text" id="nombre" class="form-control mb-4" required></input>');
     $('#guardarPuntuacion').append('<button type="submit" class="btn btn-success">Guardar</button>');
     $('#guardarPuntuacion').on('submit', guardarPuntuaciones);
 }
@@ -139,7 +148,7 @@ function guardarPuntuaciones(e) {
     let puntuaciones = getPuntuaciones();
     puntuaciones.push({ nombre: $('#nombre').val(), puntuacion: puntuacion });
     localStorage.setItem('puntuaciones', JSON.stringify(puntuaciones));
-    mostrarTop();
+    mostrarTop($('#nombre').val());
 }
 
 function getPuntuaciones() {
@@ -151,9 +160,10 @@ function getPuntuaciones() {
 
 }
 
-function mostrarTop() {
+function mostrarTop(nombre = '') {
     $('#cuerpo').empty();
     $('#cuerpo').append('<h1>TOP PUNTUACIONES</h1>');
+    nombre != '' && $('#cuerpo').append(`<h2>Tu nombre:${nombre}</h2>`);
     $('#cuerpo').append('<div class="w-25" id="contenedor"></div>');
     $('#contenedor').append('<table class="table text-center" id="puntuaciones"></table>');
     $('#puntuaciones').append('<thead><tr><th>Posicion</th><th>Nombre</th><th>Puntuacion</th>')
@@ -164,8 +174,8 @@ function mostrarTop() {
     puntuaciones.forEach((element, index) => {
         $('#top').append(`<tr><td>${index + 1}</td><td>${element.nombre}</td><td>${element.puntuacion}</td>`)
     })
-    $('#cuerpo').append('<button type="button" id="resetear" class="btn btn-primary">Volver a intentarlo</button>');
-    $('#resetear').on('click', mostrarPreguntas);
+    $('#cuerpo').append('<button type="button" id="resetear" class="btn btn-primary">Volver a inicio</button>');
+    $('#resetear').on('click', menu);
 }
 
 function mostrarPreguntas() {
