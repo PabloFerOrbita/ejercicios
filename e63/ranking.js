@@ -45,7 +45,7 @@ function menu() {
     $('#cuerpo').append('<button type="button" id="comenzar" class="btn btn-success mb-3">Comenzar Juego</button>');
     $('#cuerpo').append('<button type="button" id="ranking" class="btn btn-primary">Ver Ranking</button>');
     $('#comenzar').click(mostrarPreguntas);
-    $('#ranking').click(() => {mostrarTop()});
+    $('#ranking').click(() => { mostrarTop() });
 }
 
 function setPreguntas() {
@@ -136,6 +136,7 @@ function comprobarRespuesta(respuesta = '') {
 function sacarFormulario() {
     $('#cuerpo').empty();
     $('#cuerpo').append('<form id="guardarPuntuacion" class="h-25 d-flex flex-column justify-content-center align-items-center g-3"></form>');
+    $('#cuerpo').append('<h3 id="yaExiste" class="text-danger"></h3>')
     $('#guardarPuntuacion').append(`<h1>Has obtenido ${puntuacion} puntos</h1>`);
     $('#guardarPuntuacion').append('<label for="nombre" class=" form-label">Introduce un nombre para guardar tu puntuación</label>');
     $('#guardarPuntuacion').append('<input type="text" id="nombre" class="form-control mb-4" required></input>');
@@ -146,6 +147,10 @@ function sacarFormulario() {
 function guardarPuntuaciones(e) {
     e.preventDefault();
     let puntuaciones = getPuntuaciones();
+    if (puntuaciones.find(element => element.nombre.trim() == $('#nombre').val().trim())) {
+        $('#yaExiste').text('El nombre introducido ya existe');
+        return;
+    }
     puntuaciones.push({ nombre: $('#nombre').val(), puntuacion: puntuacion });
     localStorage.setItem('puntuaciones', JSON.stringify(puntuaciones));
     mostrarTop($('#nombre').val());
