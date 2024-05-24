@@ -16,6 +16,7 @@ var radioFalso1;
 var radioCorrecto;
 var radioFalso2;
 var puntuacion;
+var pasar;
 var preguntasContestadas;
 
 
@@ -48,6 +49,8 @@ function setPreguntas() {
 
 
 function generarPregunta() {
+    clearTimeout(siguiente);
+    $('#paraSiguiente').text('');
     if (preguntasContestadas.length == preguntas.length) {
         sacarFormulario();
         return;
@@ -107,6 +110,17 @@ function comprobarRespuesta(respuesta = '') {
     } else {
         puntuacion += tiempo;
     }
+    var paraSiguiente = 3;
+    $('#paraSiguiente').text('Siguiente pregunta en ' + paraSiguiente);
+    siguiente = setInterval(() => {
+
+        paraSiguiente--;
+        $('#paraSiguiente').text('Siguiente pregunta en ' + paraSiguiente);
+        if (paraSiguiente == 0) {
+            generarPregunta()
+        }
+
+    }, 1000);
     $('.respuesta').attr('disabled', true);
 }
 
@@ -166,6 +180,7 @@ function mostrarPreguntas() {
     for (let i = 1; i <= 3; i++) {
         $('#respuestas').append(`<div class="form-check" id="respuesta${i}"><label class="form-check-label" for="radio${i}" id="descripcion${i}"></label></div>`);
     }
+    $('#cuerpo').append('<p id="paraSiguiente"></p>');
     $('#siguiente').on('click', generarPregunta)
     generarPregunta();
 }
