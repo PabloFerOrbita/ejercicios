@@ -113,6 +113,7 @@ function comprobarRespuesta(respuesta = '') {
 function sacarFormulario() {
     $('#cuerpo').empty();
     $('#cuerpo').append('<form id="guardarPuntuacion" class="h-25 d-flex flex-column justify-content-center align-items-center g-3"></form>');
+    $('#guardarPuntuacion').append(`<h1>Has obtenido ${puntuacion} puntos</h1>`);
     $('#guardarPuntuacion').append('<label for="nombre" class=" form-label">Introduce un nombre para guardar tu puntuación</label>');
     $('#guardarPuntuacion').append('<input type="text" id="nombre" class="form-control mb-4"></input>');
     $('#guardarPuntuacion').append('<button type="submit" class="btn btn-success">Guardar</button>');
@@ -144,6 +145,7 @@ function mostrarTop() {
     $('#puntuaciones').append('<thead><tr><th>Posicion</th><th>Nombre</th><th>Puntuacion</th>')
     let puntuaciones = getPuntuaciones();
     puntuaciones.sort((a, b) => b.puntuacion - a.puntuacion);
+    puntuaciones = puntuaciones.slice(0, 10);
     $('#puntuaciones').append('<tbody id="top"></tbody>')
     puntuaciones.forEach((element, index) => {
         $('#top').append(`<tr><td>${index + 1}</td><td>${element.nombre}</td><td>${element.puntuacion}</td>`)
