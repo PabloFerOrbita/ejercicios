@@ -10,20 +10,16 @@
 <body>
     <form action="" method="get">
         <input type="text" id="array" name="array" /> <br>
-        <button>Multiplicar Array</button><br>
+        <button>Quitar ceros</button><br>
     </form>
     <?php
     if (isset($_GET['array'])) {
-        echo multiplicarArreglo($_GET['array']);
+        echo implode(' ',removerCeros($_GET['array']));
     }
-    function multiplicarArreglo($array)
+    function removerCeros($array)
     {
-        $producto = 1;
-        $array = explode(' ', $array);
-        foreach ($array as $numero) {
-            $producto *= intval($numero);
-        }
-        return $producto;
+        $array = str_split(implode('', explode('0', implode('', explode(' ', $array)))));
+        return $array;
     }
     ?>
 </body>
